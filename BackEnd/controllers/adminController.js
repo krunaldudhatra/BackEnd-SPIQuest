@@ -141,14 +141,35 @@ export const createSubject = async (req, res) => {
   }
 };
 
-export const getAllBranches = async (req, res) => {
+// GET all subjects
+export const getAllSubjects = async (req, res) => {
   try {
-    const branches = await Branch.find();
-    res.json(branches);
+    const subjects = await SubjectData.find();
+    res.status(200).json(subjects);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
+export const getAssignedSubjects = async (req, res) => {
+  try {
+    const { branch_id, semester_no } = req.params;
+
+    const branch = await Branch.findById(branch_id).populate('semesters.subjects');
+    if (!branch) return res.status(404).json({ message: 'Branch not found' });
+
+    const semester = branch.semesters.find(s => s.semesterNo === Number(semester_no));
+    if (!semester) return res.status(404).json({ message: 'Semester not found' });
+
+    res.status(200).json({
+      semesterNo: semester.semesterNo,
+      subjects: semester.subjects
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export const assignSubjectsToSemester = async (req, res) => {
   try {
     const { branch_id, semester_no } = req.params;

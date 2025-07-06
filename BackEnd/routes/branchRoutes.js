@@ -3,7 +3,7 @@ import {
   getAllBranches,
   getSemesterData,
   getSubjectData,
-  
+
 } from '../controllers/branchController.js';
 
 const router = express.Router();

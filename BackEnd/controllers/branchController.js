@@ -3,16 +3,14 @@ import SubjectData from '../models/SubjectData.js';
 import mongoose from 'mongoose';
 
 
-// GET all subjects
-export const getAllSubjects = async (req, res) => {
+export const getAllBranches = async (req, res) => {
   try {
-    const subjects = await SubjectData.find();
-    res.status(200).json(subjects);
+    const branches = await Branch.find();
+    res.json(branches);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
-
 // GET semesters (with subject details) for a branch
 export const getSemesterData = async (req, res) => {
   try {

@@ -2,7 +2,7 @@ import express from 'express'
 import {
   createBranch, updateBranch, deleteBranch,
   createSubject, assignSubjectsToSemester,
-  updateSubject, deleteSubject,getAllSubjects
+  updateSubject, deleteSubject,getAllSubjects,getAssignedSubjects
 } from '../controllers/adminController.js'
 
 const router = express.Router()
@@ -20,5 +20,6 @@ router.delete('/subjects/:id', deleteSubject)
 
 // Assign subjects to semester
 router.post('/branches/:branch_id/semester/:semester_no/assign', assignSubjectsToSemester)
+router.get('/branches/:branch_id/semester/:semester_no/assign', getAssignedSubjects);
 
 export default router
