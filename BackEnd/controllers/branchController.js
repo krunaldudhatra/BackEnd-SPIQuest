@@ -2,6 +2,8 @@ import Branch from '../models/Branch.js';
 import SubjectData from '../models/SubjectData.js';
 import mongoose from 'mongoose';
 
+
+
 // GET all branches
 export const getAllBranches = async (req, res) => {
   try {

@@ -4,20 +4,20 @@ import {
   createSubject, assignSubjectsToSemester,
   updateSubject, deleteSubject
 } from '../controllers/adminController.js'
-import { checkAdmin } from '../middleware/checkAdmin.js';
+
 const router = express.Router()
 
 // Branch routes
-router.post('/branches',checkAdmin,createBranch)
-router.put('/branches/:id',checkAdmin, updateBranch)
-router.delete('/branches/:id',checkAdmin, deleteBranch)
+router.post('/branches',createBranch)
+router.put('/branches/:id', updateBranch)
+router.delete('/branches/:id', deleteBranch)
 
 // Subject routes
-router.post('/subjects',checkAdmin, createSubject)
-router.put('/subjects/:id',checkAdmin, updateSubject)
-router.delete('/subjects/:id',checkAdmin, deleteSubject)
+router.post('/subjects', createSubject)
+router.put('/subjects/:id', updateSubject)
+router.delete('/subjects/:id', deleteSubject)
 
 // Assign subjects to semester
-router.post('/branches/:branch_id/semester/:semester_no/assign',checkAdmin, assignSubjectsToSemester)
+router.post('/branches/:branch_id/semester/:semester_no/assign', assignSubjectsToSemester)
 
 export default router
