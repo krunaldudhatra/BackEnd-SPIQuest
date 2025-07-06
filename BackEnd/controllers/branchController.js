@@ -14,6 +14,16 @@ export const getAllBranches = async (req, res) => {
   }
 };
 
+// GET all subjects
+export const getAllSubjects = async (req, res) => {
+  try {
+    const subjects = await SubjectData.find();
+    res.status(200).json(subjects);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // GET semesters (with subject details) for a branch
 export const getSemesterData = async (req, res) => {
   try {
