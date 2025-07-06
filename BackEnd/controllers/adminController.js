@@ -141,7 +141,14 @@ export const createSubject = async (req, res) => {
   }
 };
 
-
+export const getAllBranches = async (req, res) => {
+  try {
+    const branches = await Branch.find();
+    res.json(branches);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 export const assignSubjectsToSemester = async (req, res) => {
   try {
     const { branch_id, semester_no } = req.params;

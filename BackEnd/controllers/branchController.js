@@ -3,17 +3,6 @@ import SubjectData from '../models/SubjectData.js';
 import mongoose from 'mongoose';
 
 
-
-// GET all branches
-export const getAllBranches = async (req, res) => {
-  try {
-    const branches = await Branch.find();
-    res.json(branches);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
 // GET all subjects
 export const getAllSubjects = async (req, res) => {
   try {
