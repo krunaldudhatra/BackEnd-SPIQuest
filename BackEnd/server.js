@@ -17,7 +17,7 @@ app.use('/api', branchRoutes);
 app.use("/api/auth", authRoutes);
 app.use('/api/admin', adminRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 const HOST = '0.0.0.0';
 app.listen(PORT,HOST, () => {
     console.log(`Server running on port ${PORT}`);
