@@ -18,6 +18,9 @@ app.use("/api/auth", authRoutes);
 app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const HOST = '0.0.0.0';
+app.listen(PORT,HOST, () => {
     console.log(`Server running on port ${PORT}`);
 });
+server.keepAliveTimeout = 120000;      // 120 seconds
+server.headersTimeout = 130000;        // must be greater than keepAliveTimeout
